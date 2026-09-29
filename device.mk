@@ -26,3 +26,14 @@ PRODUCT_SOONG_NAMESPACES += \
 # Sysconfig
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/miuicamera-hiddenapi-package-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/miuicamera-hiddenapi-package-allowlist.xml
+
+# Properties
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.com.google.lens.oem_camera_package=com.android.camera \
+    ro.miui.notch=1 \
+    ro.miui.support.cta=0 \
+    ro.miui.customized.region= \
+    ro.miui.region=Global \
+    ro.miui.build.region=global \
+    ro.miui.cust_variant=en \
+    ro.product.mod_device=surya_global

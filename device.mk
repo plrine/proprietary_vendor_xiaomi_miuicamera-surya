@@ -11,6 +11,10 @@ $(call inherit-product, vendor/xiaomi/miuicamera-surya/surya/surya-vendor.mk)
 PRODUCT_PACKAGES += \
     MiuiCameraOverlay
 
+# Default permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/default-permissions-miuicamera.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/default-permissions/default-permissions-miuicamera.xml
+
 # Priv-app permission
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-miuicamera.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-miuicamera.xml

@@ -1,0 +1,81 @@
+From 52b30d5ff13b7e3eda2d784dab49144d65c2aeae Mon Sep 17 00:00:00 2001
+From: Arian <arian.kulmer@web.de>
+Date: Tue, 29 Sep 2026 08:00:36 +0000
+Subject: [PATCH] ICustomCaptureResult: Add readout timestamp
+
+Change-Id: Ib9a5c7b9f3ace8eae59c4d0d0d2628c4f34bb5b5
+---
+ .../protocol/ICustomCaptureResult.smali       | 36 +++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali b/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali
+index 56ecf5af..c0f98a17 100644
+--- a/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali
++++ b/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali
+@@ -346,7 +346,7 @@
+ .end method
+ 
+ .method public static toTotalCaptureResult(Lcom/xiaomi/protocol/ICustomCaptureResult;IZ)Landroid/hardware/camera2/TotalCaptureResult;
+-    .locals 23
++    .locals 27
+ 
+     const-string v0, "android.hardware.camera2.impl.PhysicalCaptureResultInfo"
+ 
+@@ -434,7 +434,7 @@
+ 
+     if-lt v7, v8, :cond_0
+ 
+-    const/16 v7, 0xb
++    const/16 v7, 0xd
+ 
+     :try_start_1
+     new-array v8, v7, [Ljava/lang/Class;
+@@ -488,6 +488,18 @@
+ 
+     aput-object v19, v8, v21
+ 
++    sget-object v19, Ljava/lang/Boolean;->TYPE:Ljava/lang/Class;
++
++    const/16 v23, 0xb
++
++    aput-object v19, v8, v23
++
++    sget-object v19, Ljava/lang/Long;->TYPE:Ljava/lang/Class;
++
++    const/16 v24, 0xc
++
++    aput-object v19, v8, v24
++
+     .line 8
+     invoke-virtual {v1, v8}, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+ 
+@@ -565,6 +577,26 @@
+ 
+     aput-object v19, v7, v21
+ 
++    const/16 v25, 0x0
++
++    invoke-static/range {v25 .. v25}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
++
++    move-result-object v19
++
++    const/16 v23, 0xb
++
++    aput-object v19, v7, v23
++
++    const-wide/16 v25, 0x0
++
++    invoke-static/range {v25 .. v26}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
++
++    move-result-object v19
++
++    const/16 v24, 0xc
++
++    aput-object v19, v7, v24
++
+     .line 11
+     invoke-virtual {v8, v7}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+ 
+-- 
+2.43.0
+

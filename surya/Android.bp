@@ -1,0 +1,139 @@
+//
+// Automatically generated file. DO NOT MODIFY
+//
+
+soong_namespace {
+    imports: [
+        "vendor/xiaomi/miuicamera-surya",
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "libcamera_algoup_jni.xiaomi",
+    owner: "xiaomi/miuicamera-surya",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libcamera_algoup_jni.xiaomi.so",
+            ],
+            shared_libs: [
+                "libgui_shim_miuicamera",
+                "libvndksupport",
+                "libcamera_client",
+                "libcamera_metadata",
+                "libgui",
+                "libbinder",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcamera_mianode_jni.xiaomi",
+    owner: "xiaomi/miuicamera-surya",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/libcamera_mianode_jni.xiaomi.so",
+            ],
+            shared_libs: [
+                "libgui_shim_miuicamera",
+                "libvndksupport",
+                "libcamera_client",
+                "libcamera_metadata",
+                "libgui",
+                "libbinder",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libxml2",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libFaceDetectpp-0.5.2",
+    owner: "xiaomi/miuicamera-surya",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libFaceDetectpp-0.5.2.so",
+            ],
+            shared_libs: [
+                "libfacedet",
+                "libc",
+                "libm",
+                "libdl",
+                "liblog",
+                "libEGL",
+                "libGLESv2",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libfacedet",
+    owner: "xiaomi/miuicamera-surya",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libfacedet.so",
+            ],
+            shared_libs: [
+                "libm",
+                "liblog",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+android_app_import {
+    name: "MiuiCamera",
+    owner: "xiaomi/miuicamera-surya",
+    apk: "proprietary/system/priv-app/MiuiCamera/MiuiCamera.apk",
+    overrides: [
+        "Aperture",
+    ],
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+}

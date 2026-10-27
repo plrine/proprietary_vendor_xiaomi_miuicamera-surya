@@ -1,0 +1,59 @@
+From ced167d2b0f5dbda3b0ab57b80f7510bd804cbef Mon Sep 17 00:00:00 2001
+From: Raya Mahardika <94042378+rktdnt@users.noreply.github.com>
+Date: Tue, 27 Oct 2026 18:36:10 +0000
+Subject: [PATCH] Assume that mod_device is global
+
+Otherwise, the app tries to start a custom permissions dialog which
+has dependencies on HyperOS Security Center app
+
+Change-Id: I3ffce0136d6777dc72c4ea01bb5b7c41d89af73f
+---
+ smali/OooO0O0/OooO0Oo/OooO00o/OooO0O0.smali | 18 +-----------------
+ smali_classes3/miuix/os/Build.smali         |  2 +-
+ 2 files changed, 2 insertions(+), 18 deletions(-)
+
+diff --git a/smali/OooO0O0/OooO0Oo/OooO00o/OooO0O0.smali b/smali/OooO0O0/OooO0Oo/OooO00o/OooO0O0.smali
+index a35a4d4..f507b9a 100644
+--- a/smali/OooO0O0/OooO0Oo/OooO00o/OooO0O0.smali
++++ b/smali/OooO0O0/OooO0Oo/OooO00o/OooO0O0.smali
+@@ -1230,19 +1230,3 @@
+ .method public static OooO0o()Z
+-    .locals 2
+-
+-    const-string/jumbo v0, "ro.product.mod_device"
+-
+-    const-string v1, ""
+-
+-    .line 1
+-    invoke-static {v0, v1}, Lcom/xiaomi/camera/util/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v0
+-
+-    const-string v1, "_global"
+-
+-    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+-
+-    move-result v0
+-
+-    return v0
++    .locals 1
++
++    const/4 v0, 0x1
++
++    return v0
+ .end method
+diff --git a/smali_classes3/miuix/os/Build.smali b/smali_classes3/miuix/os/Build.smali
+index 3d23089..f845309 100644
+--- a/smali_classes3/miuix/os/Build.smali
++++ b/smali_classes3/miuix/os/Build.smali
+@@ -24,7 +24,7 @@
+ 
+     invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+ 
+-    move-result v0
++    const/4 v0, 0x1
+ 
+     sput-boolean v0, Lmiuix/os/Build;->IS_INTERNATIONAL_BUILD:Z
+ 
+-- 
+2.43.0
